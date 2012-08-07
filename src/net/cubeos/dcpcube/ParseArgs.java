@@ -7,6 +7,7 @@ public class ParseArgs {
 	
 	private String [] args;
 	private ArrayList <Argument> arguments = new ArrayList <Argument> ();
+	private ArrayList <CPUDiskLayer> layers = new ArrayList <CPUDiskLayer> ();
 	
 	public ParseArgs(String [] args) {
 		addArguments();
@@ -48,6 +49,8 @@ public class ParseArgs {
 		 * 		  type of argument and that it is what it should be
 		 * 
 		 * Second: check each command that it is what it should be
+		 * 
+		 * Third: create CPUDiskLayers
 		 */
 		
 		else if (args.length >= 2) {
@@ -70,24 +73,31 @@ public class ParseArgs {
 						System.out.println("Invalid file path.");
 						System.exit(1);
 					} //close invalid file path
+					
+					/**
+					 * Create the ArrayList of all Disks before creating
+					 * the CPUDiskLayer and adding it to the ArrayList
+					 * 
+					 * --disk path/to/file
+					 * -d path/to/file
+					 */
+					
+					ArrayList <File> disks = new ArrayList <File> ();
+					
+					for (int x = 0; x < args.length-1; x++) {
+						if (args[x+1+i].equalsIgnoreCase("--disk") || args[x+1+i].equalsIgnoreCase("-d")) {
+							File f2 = new File(args[x+2+i]);							
+							if (!f2.isFile() || f2.isDirectory()) {
+								System.out.println("Invalid file path.");
+								System.exit(1);
+							} //close invalid file path
+							else disks.add(f2);
+						}//close adding disks if correct
+					} //close for loop for adding disks
+					
+					layers.add(new CPUDiskLayer(f, disks));
+					
 				} //close check if emulate has a real file path
-				
-				/**
-				 * --disk path/to/file
-				 * -d path/to/file
-				 */
-				
-				if (args[i].equalsIgnoreCase("--disk") || args[i].equalsIgnoreCase("-d")) {
-					if (i < 2) {
-						System.out.println("Invalid argument structure.");
-						System.exit(1);
-					} //close exit if --disk is used before the first --emulate argument
-					File f = new File(args[i+1]);
-					if (!f.isFile() || f.isDirectory()) {
-						System.out.println("Invalid file path.");
-						System.exit(1);
-					} //close invalid file path
-				} //close check if disk has a real file path
 				
 				/**
 				 * below: any other commands eventually added
@@ -100,7 +110,7 @@ public class ParseArgs {
 	} //close parse
 	
 	/**
-	 * creates a list of argumennts to be used
+	 * creates a list of arguments to be used
 	 * to check for parsing and also to display
 	 * on the help page
 	 * 
@@ -125,7 +135,24 @@ public class ParseArgs {
 	 */
 	
 	/**
-	 * @return an arraylist of all the emulated files
+	 * @param emulator number. each emulator is numbered
+	 * @return the specified disk layer
+	 */
+	
+	public CPUDiskLayer getSpecificDiskLayer(int emulator) {
+		return getAllCPUDiskLayers().get(emulator);
+	} //close get specific disk layer
+	
+	/**
+	 * @return an ArrayList of all CPUDiskLayers
+	 */
+	
+	public ArrayList <CPUDiskLayer> getAllCPUDiskLayers() {
+		return this.layers;
+	} //close get all CPUDiskLayers
+	
+	/**
+	 * @return an ArrayList of all the emulated files
 	 */
 	
 	public ArrayList <File> getAllEmulatedFiles() {
@@ -144,7 +171,7 @@ public class ParseArgs {
 	} //close get emulated files
 	
 	/**
-	 * @return an arraylist of all the disk files
+	 * @return an ArrayList of all the disk files
 	 */
 	
 	public ArrayList <File> getAllDiskFiles() {
