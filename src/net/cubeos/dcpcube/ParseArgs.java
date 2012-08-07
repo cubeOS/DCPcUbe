@@ -120,4 +120,42 @@ public class ParseArgs {
 	 * PUBLIC COMMANDS
 	 */
 	
+	/**
+	 * @return an arraylist of the emulated files
+	 */
+	
+	public ArrayList <File> getEmulatedFiles() {
+		ArrayList <File> emFiles = new ArrayList <File> ();
+		for (int i = 0; i < args.length; i+=2) {
+			if (args[i].equalsIgnoreCase("--emulate") || args[i].equalsIgnoreCase("-e")) {
+				File f = new File(args[i+1]);
+				if (!f.isFile() || f.isDirectory()) {
+					System.out.println("Invalid file path.");
+					System.exit(1);
+				} //close invalid file path
+				emFiles.add(f);
+			} //close check if emulate has a real file path
+		} //close for loop
+		return emFiles;
+	} //close get emulated files
+	
+	/**
+	 * @return an arraylist of the disk files
+	 */
+	
+	public ArrayList <File> getDiskFiles() {
+		ArrayList <File> diskFiles = new ArrayList <File> ();
+		for (int i = 0; i < args.length; i+=2) {
+			if (args[i].equalsIgnoreCase("--disk") || args[i].equalsIgnoreCase("-d")) {
+				File f = new File(args[i+1]);
+				if (!f.isFile() || f.isDirectory()) {
+					System.out.println("Invalid file path.");
+					System.exit(1);
+				} //close invalid file path
+				diskFiles.add(f);
+			} //close check if disk has a real file path
+		} //close for loop
+		return diskFiles;
+	} //close get disk files
+	
 } //close class

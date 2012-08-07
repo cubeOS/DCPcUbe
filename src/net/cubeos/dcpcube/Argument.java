@@ -25,6 +25,7 @@ public class Argument {
 	/**
 	 * @return the command name
 	 */
+	
 	public String getCommand() {
 		return this.command;
 	} //close get command
@@ -40,6 +41,7 @@ public class Argument {
 	/**
 	 * @return the argument for the command
 	 */
+	
 	public String getArg() {
 		return this.arg;
 	} //close get argument
