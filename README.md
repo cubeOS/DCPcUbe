@@ -5,9 +5,12 @@ DCPcUbe is a Java-based emulator for DCPU-16 that is currently in development.
 
 ##Arguments
 ```bash
---disk (-d) path/to/file
---emulate (-e) path/to/file
---help (-h)
+--disk path/to/file
+  alias: -d path/to/file
+--emulate path/to/file
+  alias: -e path/to/file
+--help
+  alias: -h
 ```
 
 ##Running DCPcUbe
