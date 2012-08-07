@@ -22,7 +22,7 @@ public class ParseArgs {
 
 	private void parse() {
 		if (args.length == 1) {
-			if (args[0].equalsIgnoreCase("-h") || args[0].equalsIgnoreCase("--help")) {
+			if (args[0].equals("-h") || args[0].equals("--help")) {
 				System.out.println();
 				for (Argument i : arguments) {
 					System.out.print(i.getCommand()+"");
@@ -67,7 +67,7 @@ public class ParseArgs {
 				 * -e path/to/file
 				 */
 				
-				if (args[i].equalsIgnoreCase("--emulate") || args[i].equalsIgnoreCase("-e")) {
+				if (args[i].equals("--emulate") || args[i].equals("-e")) {
 					File f = new File(args[i+1]);
 					if (!f.isFile() || f.isDirectory()) {
 						System.out.println("Invalid file path.");
@@ -85,7 +85,8 @@ public class ParseArgs {
 					ArrayList <File> disks = new ArrayList <File> ();
 					
 					for (int x = 0; x < args.length-1; x++) {
-						if (args[x+1+i].equalsIgnoreCase("--disk") || args[x+1+i].equalsIgnoreCase("-d")) {
+						if (args[x+1+i].equals("--emulate") || args[x+1+i].equals("-e")) break;
+						if (args[x+1+i].equals("--disk") || args[x+1+i].equals("-d")) {
 							File f2 = new File(args[x+2+i]);							
 							if (!f2.isFile() || f2.isDirectory()) {
 								System.out.println("Invalid file path.");
@@ -158,7 +159,7 @@ public class ParseArgs {
 	public ArrayList <File> getAllEmulatedFiles() {
 		ArrayList <File> emFiles = new ArrayList <File> ();
 		for (int i = 0; i < args.length; i+=2) {
-			if (args[i].equalsIgnoreCase("--emulate") || args[i].equalsIgnoreCase("-e")) {
+			if (args[i].equals("--emulate") || args[i].equals("-e")) {
 				File f = new File(args[i+1]);
 				if (!f.isFile() || f.isDirectory()) {
 					System.out.println("Invalid file path.");
@@ -177,7 +178,7 @@ public class ParseArgs {
 	public ArrayList <File> getAllDiskFiles() {
 		ArrayList <File> diskFiles = new ArrayList <File> ();
 		for (int i = 0; i < args.length; i+=2) {
-			if (args[i].equalsIgnoreCase("--disk") || args[i].equalsIgnoreCase("-d")) {
+			if (args[i].equals("--disk") || args[i].equals("-d")) {
 				File f = new File(args[i+1]);
 				if (!f.isFile() || f.isDirectory()) {
 					System.out.println("Invalid file path.");
