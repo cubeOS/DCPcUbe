@@ -13,8 +13,14 @@ DCPcUbe is a Java-based emulator for DCPU-16 that is currently in development.
 ##Running DCPcUbe
 Running DCPcUbe is easy. You can use any of the arguments above. For example:
 ```bash
-java -jar DCPcUbe.jar --emulate path/to/file
+java -jar DCPcUbe.jar --e path/to/file
 ```
 You can also emulate multiple files!
 ```bash
-java -jar DCPcUbe.jar --emulate path/to/first/file --emulate path/to/second/file
+java -jar DCPcUbe.jar -e path/to/first/file -e path/to/second/file
+```
+Let's say you want to add more disks. You can do that!
+```bash
+java -jar DCPcUbe.jar -e path/to/file -d path/to/file
+```
+You can have multiple disks for each emulation you specify to run. The possibilities are *endless*!
