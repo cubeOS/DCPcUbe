@@ -51,10 +51,10 @@ public class CPUDiskLayer {
 		} //close for loop for adding to the char array
 		
 		return ca;
-	}
+	} //close to char array
 	
 	/**
-	 *  ---- PUBLIC COMMANDS ----
+	 * ---- PUBLIC COMMANDS ----
 	 */
 	
 	/**
