@@ -78,6 +78,10 @@ public class ParseArgs {
 				 */
 				
 				if (args[i].equalsIgnoreCase("--disk") || args[i].equalsIgnoreCase("-d")) {
+					if (i < 2) {
+						System.out.println("Invalid argument structure.");
+						System.exit(1);
+					} //close exit if --disk is used before the first --emulate argument
 					File f = new File(args[i+1]);
 					if (!f.isFile() || f.isDirectory()) {
 						System.out.println("Invalid file path.");
@@ -117,14 +121,14 @@ public class ParseArgs {
 	} //close add arguments
 	
 	/**
-	 * PUBLIC COMMANDS
+	 *  ---- PUBLIC COMMANDS ----
 	 */
 	
 	/**
-	 * @return an arraylist of the emulated files
+	 * @return an arraylist of all the emulated files
 	 */
 	
-	public ArrayList <File> getEmulatedFiles() {
+	public ArrayList <File> getAllEmulatedFiles() {
 		ArrayList <File> emFiles = new ArrayList <File> ();
 		for (int i = 0; i < args.length; i+=2) {
 			if (args[i].equalsIgnoreCase("--emulate") || args[i].equalsIgnoreCase("-e")) {
@@ -140,10 +144,10 @@ public class ParseArgs {
 	} //close get emulated files
 	
 	/**
-	 * @return an arraylist of the disk files
+	 * @return an arraylist of all the disk files
 	 */
 	
-	public ArrayList <File> getDiskFiles() {
+	public ArrayList <File> getAllDiskFiles() {
 		ArrayList <File> diskFiles = new ArrayList <File> ();
 		for (int i = 0; i < args.length; i+=2) {
 			if (args[i].equalsIgnoreCase("--disk") || args[i].equalsIgnoreCase("-d")) {

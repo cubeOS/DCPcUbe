@@ -23,6 +23,10 @@ public class Argument {
 	} //close constructor
 	
 	/**
+	 *  ---- PUBLIC COMMANDS ----
+	 */
+	
+	/**
 	 * @return the command name
 	 */
 	
