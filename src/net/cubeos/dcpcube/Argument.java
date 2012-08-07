@@ -8,7 +8,6 @@ public class Argument {
 	private String arg;
 	
 	/**
-	 * 
 	 * @param command, --command
 	 * @param alias, -c
 	 * @param arg, <argument>
@@ -24,7 +23,6 @@ public class Argument {
 	} //close constructor
 	
 	/**
-	 * 
 	 * @return the command name
 	 */
 	public String getCommand() {
@@ -32,7 +30,6 @@ public class Argument {
 	} //close get command
 	
 	/**
-	 * 
 	 * @return the alias for the command
 	 */
 	
@@ -41,7 +38,6 @@ public class Argument {
 	} //close get alias
 	
 	/**
-	 * 
 	 * @return the argument for the command
 	 */
 	public String getArg() {
@@ -49,7 +45,6 @@ public class Argument {
 	} //close get argument
 	
 	/**
-	 * 
 	 * @return the description for the command
 	 */
 	
