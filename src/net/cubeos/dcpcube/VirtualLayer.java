@@ -12,10 +12,10 @@ public class VirtualLayer
 	 * 
 	 * @param args Containing the path to the binary to be loaded,
 	 * and any options, if applicable
+	 * 
 	 */
-	public static void main(String[] args)
-	{
-		// TODO Auto-generated method stub
+	public static void main(String[] args) {
+		new ParseArgs(args);
 
 	}
 
