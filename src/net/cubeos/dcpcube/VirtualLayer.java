@@ -9,7 +9,9 @@ public class VirtualLayer
 {
 
 	/**
-	 * @param args
+	 * 
+	 * @param args Containing the path to the binary to be loaded,
+	 * and any options, if applicable
 	 */
 	public static void main(String[] args)
 	{
