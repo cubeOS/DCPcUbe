@@ -31,7 +31,7 @@ public class CPUDiskLayer {
 	} //close get emulator
 	
 	/**
-	 * @return arraylist of all disk files
+	 * @return ArrayList of all disk files
 	 */
 	
 	public ArrayList <File> getAllDisks() {
