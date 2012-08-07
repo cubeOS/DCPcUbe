@@ -15,8 +15,8 @@ public class VirtualLayer
 	 * 
 	 */
 	public static void main(String[] args) {
-		new ParseArgs(args);
-
+		ParseArgs arguments = new ParseArgs(args);
+		
 	}
 
 }
