@@ -20,10 +20,14 @@ java -jar DCPcUbe.jar --e path/to/file
 ```
 You can also emulate multiple files!
 ```bash
-java -jar DCPcUbe.jar -e path/to/first/file -e path/to/second/file
+java -jar DCPcUbe.jar -e path/to/file -e path/to/file
 ```
 Let's say you want to add more disks. You can do that!
 ```bash
 java -jar DCPcUbe.jar -e path/to/file -d path/to/file
 ```
-You can have multiple disks for each emulation you specify to run. The possibilities are *endless*!
+You can have multiple disks for each emulation you specify to run.
+```bash
+java -jar DCPcUbe.jar -e path/to/file -d path/to/file -d path/to/file -e path/to/file -d path/to/file
+```
+The possibilities are *endless*!
