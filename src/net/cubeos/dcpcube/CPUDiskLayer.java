@@ -24,12 +24,11 @@ public class CPUDiskLayer {
 		this.disks = disks;
 		try {
 			chararrays.add(toCharArray(this.emulator));
-			for (File f : this.disks)
-				chararrays.add(toCharArray(f));
+			if (this.disks != null)
+				for (File f : this.disks)
+					chararrays.add(toCharArray(f));
 			} //close try 
-		catch (Exception e) {
-				e.printStackTrace();
-			} //close catch
+		catch (Exception e) {}
 	} //close constructor
 	
 	/**
@@ -39,17 +38,24 @@ public class CPUDiskLayer {
 	 * @throws IOException
 	 */
 	
-	private char [] toCharArray(File f) throws IOException {
+	private char [] toCharArray(File f) throws IOException, NullPointerException {
 		char [] ca = new char [(int) f.length()];
 		int a;
 		
 		DataInputStream dis = new DataInputStream(new FileInputStream(f));
 		BufferedReader br = new BufferedReader(new InputStreamReader(dis));
 		
-		for (int i = 0; (a = br.read()) != -1; i++) {
-			ca[i] = (char) a;
-		} //close for loop for adding to the char array
+		for (int i = 0; ((a = br.read()) != -1); i++)
+			if (!br.equals(null))
+				ca[i] = (char) a;
 		
+		br.close();
+		dis.close();
+		
+		// TEST PRINT OUT CHAR ARRAY
+		for (int i = 0; i < ca.length; i++)
+			System.out.println(ca[i]+" ");
+			
 		return ca;
 	} //close to char array
 	
