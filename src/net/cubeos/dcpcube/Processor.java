@@ -1,34 +1,6 @@
 package net.cubeos.dcpcube;
 
-public class Processor
-{
-	
-	
-	public static class Opcode
-	{
-		public Opcode(identifier name, Integer cycles, Integer value)
-		{
-			
-		}
-		
-		public enum identifier
-		{
-			SET, ADD, SUB, MUL,
-			MLI, DIV, DVI, MOD,
-			MDI, AND, BOR, XOR,
-			SHR, ASR, SHL, IFB,
-			IFC, IFE, IFN, IFG,
-			IFA, IFL, IFU, 
-			     ADX, SBX,
-			     STI, STD,
-			
-			JSR,
-			               INT,
-			IAG, IAS, RFI, IAQ,
-			               HWN,
-			HWQ, HWI
-		}
-	}
+public class Processor {
 	
 	public static final Opcode[] opcode = {
 		null,							   	//x00
@@ -98,4 +70,5 @@ public class Processor
 		null,								//x1e
 		null,								//x1f
 	};
-}
+	
+} //close class
