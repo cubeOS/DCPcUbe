@@ -35,7 +35,7 @@ public class CPUDiskLayer {
 	 * 
 	 * @param whichever file is being transfered to a char array
 	 * @return the char array for the specified file
-	 * @throws IOException
+	 * @throws IOException, NullPointerException
 	 */
 	
 	private char [] toCharArray(File f) throws IOException, NullPointerException {
