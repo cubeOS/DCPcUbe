@@ -51,6 +51,8 @@ public class ParseArgs {
 		 * Second: check each command that it is what it should be
 		 * 
 		 * Third: create CPUDiskLayers
+		 * 
+		 * Forth: emulate the screens
 		 */
 		
 		else if (args.length >= 2) {
@@ -84,10 +86,11 @@ public class ParseArgs {
 					
 					ArrayList <File> disks = new ArrayList <File> ();
 					
-					for (int x = 0; x < args.length-1; x++) {
-						if (args[x+1+i].equals("--emulate") || args[x+1+i].equals("-e")) break;
-						if (args[x+1+i].equals("--disk") || args[x+1+i].equals("-d")) {
-							File f2 = new File(args[x+2+i]);							
+					for (int x = i; x < args.length-1; x++) {
+						if (args[x+1].equals("--emulate") || args[x+1].equals("-e")) 
+							break;
+						else if (args[x+1].equals("--disk") || args[x+1].equals("-d")) {
+							File f2 = new File(args[x+2]);							
 							if (!f2.isFile() || f2.isDirectory()) {
 								System.out.println("Invalid file path.");
 								System.exit(1);
@@ -105,6 +108,18 @@ public class ParseArgs {
 				 */
 				
 			} //close parse each
+			
+			/**
+			 * Emulate each screen below
+			 */
+			
+			for (CPUDiskLayer layer : layers)
+				try {
+					new Screen(layer.toCharArray(layer.getEmulator()), layer.getEmulator().getName());
+				} //close try
+				catch (Exception e) {
+					e.printStackTrace();
+				} //close catch
 			
 		} //close arguments equaling 2
 		

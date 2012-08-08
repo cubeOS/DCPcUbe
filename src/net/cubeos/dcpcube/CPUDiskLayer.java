@@ -32,13 +32,17 @@ public class CPUDiskLayer {
 	} //close constructor
 	
 	/**
+	 * ---- PUBLIC COMMANDS ----
+	 */
+	
+	/**
 	 * 
 	 * @param whichever file is being transfered to a char array
 	 * @return the char array for the specified file
 	 * @throws IOException, NullPointerException
 	 */
 	
-	private char [] toCharArray(File f) throws IOException, NullPointerException {
+	public char [] toCharArray(File f) throws IOException, NullPointerException {
 		char [] ca = new char [(int) f.length()];
 		int a;
 		
@@ -51,17 +55,9 @@ public class CPUDiskLayer {
 		
 		br.close();
 		dis.close();
-		
-		// TEST PRINT OUT CHAR ARRAY
-		for (int i = 0; i < ca.length; i++)
-			System.out.println(ca[i]+" ");
 			
 		return ca;
 	} //close to char array
-	
-	/**
-	 * ---- PUBLIC COMMANDS ----
-	 */
 	
 	/**
 	 * @return emulator file
@@ -106,7 +102,7 @@ public class CPUDiskLayer {
 	 */
 	
 	public char [] getSpecificCharArray(int arraynum) {
-		return getAllCharArrays().get(arraynum);
+		return this.chararrays.get(arraynum);
 	} //close get specific char array
-	
+
 } //close class
